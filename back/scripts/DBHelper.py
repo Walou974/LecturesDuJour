@@ -19,6 +19,8 @@ class DBHelper:
             cursor.execute("insert into GospelTexts (TextTypeId, TextContent, TextDate, TextRef, TextTitle, Intro) values (?, ?, ?, ?, ?, ?)", (type_name, text_content, text_date, text_ref, text_title, intro))
             conn.commit()
             conn.close()
+            return True
+        return False
         
         
     def check_if_text_exists(self, text_date, type_name):

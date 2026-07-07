@@ -85,8 +85,10 @@ def get_lecture_1(data):
     #else:
         #print("lecture_1 not found in the data.")
 if __name__ == "__main__":
-    numdays = 240
+    numdays = 356
     base = datetime.date.today()
+    count_succes = 0
+    count_fail = 0
     date_list = [base - datetime.timedelta(days=x) for x in range(numdays)]
     for date in tqdm(date_list):
         data = get_messes(date)
@@ -98,7 +100,7 @@ if __name__ == "__main__":
             if evangile:
                 try:
                     # Insert into database main text
-                    db_helper.insert_text_type(
+                    evangile_succes = db_helper.insert_text_type(
                         type_name=text_types.get(evangile["type"], None),
                         text_content=evangile["text"],
                         text_date=str(date),
@@ -106,9 +108,12 @@ if __name__ == "__main__":
                         text_title=evangile["title"],
                         intro=evangile["intro"]
                     )
-                    
+                    if (evangile_succes) : 
+                        count_succes += 1
+                    else:
+                        count_fail += 1
                     # Insert into database verse
-                    db_helper.insert_text_type(
+                    verse_succes = db_helper.insert_text_type(
                         type_name=text_types.get("verse", None),
                         text_content=evangile["verse"],
                         text_date=str(date),
@@ -116,6 +121,10 @@ if __name__ == "__main__":
                         text_title=evangile["title"],
                         intro=""
                     )
+                    if (verse_succes) : 
+                        count_succes += 1
+                    else:
+                        count_fail += 1
                 except Exception as e:
                     print(f"An error occurred while inserting data into the database: {e}")
             #else:
@@ -124,7 +133,7 @@ if __name__ == "__main__":
                 try:
                     
                     # Insert into database main text
-                    db_helper.insert_text_type(
+                    psaume_succes = db_helper.insert_text_type(
                         type_name=text_types.get(psaume["type"], None),
                         text_content=psaume["text"],
                         text_date=str(date),
@@ -132,6 +141,10 @@ if __name__ == "__main__":
                         text_title=psaume["title"],
                         intro=None
                     )
+                    if (psaume_succes) : 
+                        count_succes += 1
+                    else:
+                        count_fail += 1
                 except Exception as e:
                     print(f"An error occurred while inserting data into the database: {e}")
             #else:
@@ -141,7 +154,7 @@ if __name__ == "__main__":
                 try:
                     
                     # Insert into database main text
-                    db_helper.insert_text_type(
+                    lecture_1_succes = db_helper.insert_text_type(
                         type_name=text_types.get(lecture_1["type"], None),
                         text_content=lecture_1["text"],
                         text_date=str(date),
@@ -149,7 +162,13 @@ if __name__ == "__main__":
                         text_title=lecture_1["title"],
                         intro=None
                     )
+                    if (lecture_1_succes) : 
+                        count_succes += 1
+                    else:
+                        count_fail += 1
                 except Exception as e:
                     print(f"An error occurred while inserting data into the database: {e}")
             #else:
                 #print("No lecture_1 available to process.")
+                
+    print(f"Successfuly imported texts: {count_succes}, not imported texts: {count_fail} (date range : {date_list[0]} - {date_list[-1]} )")
