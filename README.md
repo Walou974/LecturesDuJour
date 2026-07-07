@@ -231,7 +231,7 @@ Vue SQL simplifiant l'accès aux données depuis l'API PHP.
 - [x] Navigation par date
 - [x] Mode sombre
 - [x] Responsive mobile
-- [ ] Navigation entre Lecture / Psaume / Évangile
+- [x] Navigation entre Lecture / Psaume / Évangile
 - [ ] Historique des lectures
 - [ ] Recherche par référence biblique
 - [ ] PWA
