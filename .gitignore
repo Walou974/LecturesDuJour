@@ -1,0 +1,30 @@
+# Node
+node_modules/
+front/node_modules/
+
+# Python
+__pycache__/
+*.pyc
+
+# SQLite
+*.db
+*.sqlite
+*.sqlite3
+
+# React / Vite
+dist/
+.vite/
+
+# VS Code
+.vscode/
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Logs
+*.log
+
+# Environment
+.env
+.env.local

@@ -1,0 +1,320 @@
+@import "tailwindcss";
+@import "flowbite-react/plugin/tailwindcss";
+@source "../.flowbite-react/class-list.json";
+
+:root {
+  --bg: #0f172a;
+  --card-bg: #1e293b;
+  --text: #ffffff;
+  --subtitle: #94a3b8;
+  --accent: #fbbf24;
+  --border: #334155;
+--scheme: dark;
+}
+
+.light {
+  --bg: #f8fafc;
+  --card-bg: #ffffff;
+  --text: #0f172a;
+  --subtitle: #64748b;
+  --accent: #d97706;
+  --border: #cbd5e1;
+  --scheme: light;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+#root {
+  width: 100%;
+}
+
+.app-container {
+  min-height: 100vh;
+  padding: 40px 20px;
+}
+
+.page-title {
+  text-align: center;
+  color: var(--accent);
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-bottom: 40px;
+}
+
+.gospel-card {
+  max-width: 900px;
+  margin: auto;
+  background: var(--card-bg);
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.gospel-card hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 20px 0;
+}
+
+.gospel-title {
+  color: var(--accent);
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.gospel-subtitle {
+  color: var(--subtitle);
+  font-size: clamp(1.25rem, 3.5vw, 1.5rem);
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.gospel-subtext {
+  color: var(--subtitle);
+  margin-bottom: 15px;
+  font-style: italic;
+  text-align: center;
+}
+
+.gospel-verse-ref {
+  color: var(--subtitle);
+  margin-bottom: 15px;
+  font-style: italic;
+}
+
+.gospel-content {
+  line-height: 1.8;
+  font-size: clamp(1.1rem, 3vw, 1.25rem);
+}
+
+.gospel-content p {
+  margin-bottom: 18px;
+}
+
+.theme-button {
+  display: block;
+  margin: 0 auto 30px auto;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background: #2563eb;
+  color: white;
+  font-size: clamp(1rem, 3vw, 1.25rem);
+  transition: 0.3s;
+}
+
+.theme-button:hover {
+  background: #1d4ed8;
+}
+/* verse card small on bottom right */
+
+.verse-card {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 20%;
+  background: var(--card-bg);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.verse-content {
+  line-height: 1.6;
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
+}
+
+.verse-card h4 {
+  color: var(--accent);
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  margin-bottom: 10px;
+  text-align: center;
+}
+.verse-fab {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+
+  width: 60px;
+  height: 60px;
+
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  border-radius: 50%;
+
+  background: var(--accent);
+  color: white;
+
+  font-size: 1.8rem;
+  line-height: 1;
+
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+
+  z-index: 2000;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+
+  background: rgba(0,0,0,.6);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 3000;
+}
+
+.verse-modal {
+  width: 90%;
+  max-width: 500px;
+
+  background: var(--card-bg);
+  color: var(--text);
+
+  border-radius: 20px;
+  padding: 25px;
+}
+
+.close-btn {
+  margin-top: 20px;
+
+  width: 100%;
+  padding: 10px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: var(--accent);
+  color: white;
+
+  cursor: pointer;
+}
+
+.date-selector {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+
+  margin-bottom: 25px;
+}
+
+.date-nav-button {
+  width: 40px;
+  height: 40px;
+
+  border: none;
+  border-radius: 50%;
+
+  background: var(--accent);
+  color: white;
+
+  cursor: pointer;
+
+  transition: transform 0.2s;
+}
+
+.date-nav-button:hover {
+  transform: scale(1.05);
+}
+.date-nav-button {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border: none;
+  border-radius: 50%;
+
+  background: var(--accent);
+  color: white;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+
+.date-nav-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.date-nav-button img {
+  width: 18px;
+  height: 18px;
+}
+
+
+.date-picker {
+  background: var(--card-bg);
+  color: var(--text);
+  color-scheme: var(--scheme);
+
+  border: 2px solid var(--border);
+  border-radius: 12px;
+
+  padding: 10px 16px;
+
+  font-size: 1rem;
+  font-weight: 500;
+
+  transition: all 0.2s ease;
+}
+
+.date-picker:hover {
+  border-color: var(--accent);
+}
+
+.date-picker:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 8px rgba(251, 191, 36, 0.3);
+}
+
+.reading-selector {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+
+  margin-bottom: 20px;
+
+  flex-wrap: wrap;
+}
+
+.reading-tab {
+  padding: 10px 16px;
+
+  border: 1px solid var(--border);
+  border-radius: 12px;
+
+  background: var(--card-bg);
+  color: var(--text);
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.reading-tab.active {
+  background: var(--accent);
+  color: black;
+  font-weight: bold;
+}
