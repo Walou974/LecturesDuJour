@@ -86,7 +86,7 @@ function App() {
 
         const verseData =
           await verseResponse.json();
-console.log(readingsData);
+        console.log(readingsData);
 
         setReadings(readingsData);
         setCurrentReading(0);
@@ -131,129 +131,130 @@ console.log(readingsData);
             lightMode={lightMode}
             setLightMode={setLightMode}
           />
+          </div>
+          <div>
+            <DateSelector selectedDate={selectedDate} setSelectedDate={setSelectedDate} lightMode={lightMode} />
 
-          <DateSelector selectedDate={selectedDate} setSelectedDate={setSelectedDate} lightMode={lightMode} />
+          </div>
 
+          <div className="reading-selector">
+            {readings.map((reading, index) => (
+              <button
+                key={index}
+                className={
+                  currentReading === index
+                    ? "reading-tab active"
+                    : "reading-tab"
+                }
+                onClick={() =>
+                  setCurrentReading(index)
+                }
+              >
+                {reading.DisplayedLabel}
+              </button>
+            ))}
+          </div>
+
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            <Card
+              mainTitle="Chargement..."
+              content="Récupération des lectures du jour..."
+              selectedDate={selectedDate}
+            />
+          </motion.div>
         </div>
+        );
+  }
 
-        <div className="reading-selector">
-          {readings.map((reading, index) => (
-            <button
-              key={index}
-              className={
-                currentReading === index
-                  ? "reading-tab active"
-                  : "reading-tab"
-              }
-              onClick={() =>
-                setCurrentReading(index)
-              }
-            >
-              {reading.DisplayedLabel}
-            </button>
-          ))}
-        </div>
+        if (error) {
+    return (
+        <div className="app-container">
+          <Header />
 
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-        >
           <Card
-            mainTitle="Chargement..."
-            content="Récupération des lectures du jour..."
+            mainTitle="Erreur"
+            content={error}
             selectedDate={selectedDate}
           />
-        </motion.div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="app-container">
-        <Header />
-
-        <Card
-          mainTitle="Erreur"
-          content={error}
-          selectedDate={selectedDate}
-        />
-      </div>
-    );
-  }
-
-  return (
-    <div className="app-container">
-      <Header />
-
-      <div
-        style={{
-          textAlign: "center",
-          marginBottom: "25px",
-        }}
-      >
-        <ThemeToggle
-          lightMode={lightMode}
-          setLightMode={setLightMode}
-        />
-      </div>
-      <div
-        style={{
-          textAlign: "center",
-          marginBottom: "25px",
-        }}
-      >
-        <DateSelector selectedDate={selectedDate} setSelectedDate={setSelectedDate} lightMode={lightMode} />
-
-      </div>
-      <div className="reading-selector">
-          {readings.map((reading, index) => (
-            <button
-              key={index}
-              className={
-                currentReading === index
-                  ? "reading-tab active"
-                  : "reading-tab"
-              }
-              onClick={() =>
-                setCurrentReading(index)
-              }
-            >
-              {reading.DisplayedLabel}
-            </button>
-          ))}
         </div>
+        );
+  }
 
-      
-<Card
-  Maintitle={readings[currentReading].title}
-  content={readings[currentReading]}
-  selectedDate={selectedDate}
-/>
+        return (
+        <div className="app-container">
+          <Header />
 
-      <div
-        style={{
-          textAlign: "center",
-          marginTop: "25px",
-        }}
-      >
-        <DateSelector selectedDate={selectedDate} setSelectedDate={setSelectedDate} lightMode={lightMode} />
+          <div
+            style={{
+              textAlign: "center",
+              marginBottom: "25px",
+            }}
+          >
+            <ThemeToggle
+              lightMode={lightMode}
+              setLightMode={setLightMode}
+            />
+          </div>
+          <div
+            style={{
+              textAlign: "center",
+              marginBottom: "25px",
+            }}
+          >
+            <DateSelector selectedDate={selectedDate} setSelectedDate={setSelectedDate} lightMode={lightMode} />
 
-      </div>
+          </div>
+          <div className="reading-selector">
+            {readings.map((reading, index) => (
+              <button
+                key={index}
+                className={
+                  currentReading === index
+                    ? "reading-tab active"
+                    : "reading-tab"
+                }
+                onClick={() =>
+                  setCurrentReading(index)
+                }
+              >
+                {reading.DisplayedLabel}
+              </button>
+            ))}
+          </div>
 
-      <VerseCard
-        title={verse.title}
-        verse={verse.text}
-        verseRef={verse.ref}
-        isMobile={isMobile}
-        showVerse={showVerse}
-        setShowVerse={setShowVerse}
-        lightMode={lightMode}
-      />
-    </div>
-  );
+
+          <Card
+            Maintitle={readings[currentReading].title}
+            content={readings[currentReading]}
+            selectedDate={selectedDate}
+          />
+
+          <div
+            style={{
+              textAlign: "center",
+              marginTop: "25px",
+            }}
+          >
+            <DateSelector selectedDate={selectedDate} setSelectedDate={setSelectedDate} lightMode={lightMode} />
+
+          </div>
+
+          <VerseCard
+            title={verse.title}
+            verse={verse.text}
+            verseRef={verse.ref}
+            isMobile={isMobile}
+            showVerse={showVerse}
+            setShowVerse={setShowVerse}
+            lightMode={lightMode}
+          />
+        </div>
+        );
 }
 
-export default App;
+        export default App;
