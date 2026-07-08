@@ -10,9 +10,6 @@ LogHelper.info("Démarrage du script")
 db_helper = DBHelper.DBHelper("/app/database/data.db")
 
 def get_messes(Date):
-    
-    LogHelper.info("Récupération des données API")
-
     url = f"https://api.aelf.org/v1/messes/{Date}/france"
     response = requests.get(url)
 
@@ -104,6 +101,7 @@ if __name__ == "__main__":
     count_succes = 0
     count_fail = 0
     date_list = [base - datetime.timedelta(days=x) for x in range(numdays)]
+    LogHelper.info("Récupération des données API")
     for date in tqdm(date_list):
         data = get_messes(date)
         if data:
