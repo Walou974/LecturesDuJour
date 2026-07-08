@@ -3,10 +3,16 @@ import requests
 from tqdm import tqdm
 import DBHelper
 import sys
+from LogHelper import LogHelper
+
+LogHelper.info("Démarrage du script")
 
 db_helper = DBHelper.DBHelper("/app/database/data.db")
 
 def get_messes(Date):
+    
+    LogHelper.info("Récupération des données API")
+
     url = f"https://api.aelf.org/v1/messes/{Date}/france"
     response = requests.get(url)
 
@@ -14,7 +20,7 @@ def get_messes(Date):
         data = response.json()
         return data
     else:
-        #print(f"Failed to retrieve data. Status code: {response.status_code}")
+        LogHelper.error(f"Failed to retrieve data. Status code: {response.status_code}")
         return None
 
 def get_evangile(data):
@@ -134,7 +140,7 @@ if __name__ == "__main__":
                     else:
                         count_fail += 1
                 except Exception as e:
-                    print(f"An error occurred while inserting data into the database: {e}")
+                    LogHelper.error(f"An error occurred while inserting data into the database: {e}")
             #else:
                 #print("No evangile available to process.")
             if psaume:
@@ -154,7 +160,7 @@ if __name__ == "__main__":
                     else:
                         count_fail += 1
                 except Exception as e:
-                    print(f"An error occurred while inserting data into the database: {e}")
+                    LogHelper.error(f"An error occurred while inserting data into the database: {e}")
             #else:
                 #print("No psaume available to process.")
             
@@ -175,8 +181,8 @@ if __name__ == "__main__":
                     else:
                         count_fail += 1
                 except Exception as e:
-                    print(f"An error occurred while inserting data into the database: {e}")
+                    LogHelper.error(f"An error occurred while inserting data into the database: {e}")
             #else:
                 #print("No lecture_1 available to process.")
                 
-    print(f"Successfuly imported texts: {count_succes}, not imported texts: {count_fail} (date range : {date_list[0]} - {date_list[-1]} )")
+    LogHelper.info(f"Successfuly imported texts: {count_succes}, not imported texts: {count_fail} (date range : {date_list[0]} - {date_list[-1]} )")
