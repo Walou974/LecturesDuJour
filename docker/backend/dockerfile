@@ -1,0 +1,23 @@
+FROM php:8.4-cli
+
+RUN apt-get update && apt-get install -y \
+    sqlite3 \
+    libsqlite3-dev \
+    python3 \
+    python3-pip
+
+RUN docker-php-ext-install pdo_sqlite
+
+WORKDIR /app
+
+COPY back /app
+
+COPY docker/backend/start.sh /start.sh
+
+COPY back/scripts/requirements.txt /tmp/requirements.txt
+
+RUN pip3 install --break-system-packages -r /tmp/requirements.txt
+
+RUN chmod +x /start.sh
+
+CMD ["/start.sh"]

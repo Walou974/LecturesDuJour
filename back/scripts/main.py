@@ -3,7 +3,7 @@ import requests
 from tqdm import tqdm
 import DBHelper
 
-db_helper = DBHelper.DBHelper("back\\database\\data.db")
+db_helper = DBHelper.DBHelper("/app/database/data.db")
 
 def get_messes(Date):
     url = f"https://api.aelf.org/v1/messes/{Date}/france"

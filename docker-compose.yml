@@ -1,0 +1,28 @@
+services:
+
+  frontend:
+    environment:
+      VITE_API_PROXY: http://backend:8000
+
+    build:
+      context: .
+      dockerfile: docker/frontend/Dockerfile
+
+    ports:
+      - "5173:5173"
+
+    volumes:
+      - ./front:/app
+      - /app/node_modules
+
+  backend:
+    build:
+      context: .
+      dockerfile: docker/backend/Dockerfile
+
+    ports:
+      - "8000:8000"
+
+    volumes:
+      - ./back:/app
+      - ./back/database:/app/database
