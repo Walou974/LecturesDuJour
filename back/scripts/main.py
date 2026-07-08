@@ -2,6 +2,7 @@ import datetime
 import requests
 from tqdm import tqdm
 import DBHelper
+import sys
 
 db_helper = DBHelper.DBHelper("/app/database/data.db")
 
@@ -85,7 +86,14 @@ def get_lecture_1(data):
     #else:
         #print("lecture_1 not found in the data.")
 if __name__ == "__main__":
-    numdays = 356
+    if len(sys.argv) > 1: 
+        param = sys.argv[1]
+    else:
+        param = None
+    if param == 'init':
+        numdays = 356
+    else:
+        numdays = 1
     base = datetime.date.today()
     count_succes = 0
     count_fail = 0

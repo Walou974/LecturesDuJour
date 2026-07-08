@@ -220,9 +220,9 @@ Vue SQL simplifiant l'accès aux données depuis l'API PHP.
 - [x] Import Python
 - [x] Stockage SQLite
 - [x] API PHP
-- [ ] Dockerisation
+- [x] Dockerisation
 - [ ] Gestion des erreurs avancée
-- [ ] Mise à jour automatique des données
+- [x] Mise à jour automatique des données
 
 ### Frontend Features
 
