@@ -71,8 +71,8 @@ function App() {
 
         const [readingsResponse, verseResponse] =
           await Promise.all([
-            fetch(`${baseUrl}/api/lectures.php?date=${selectedDate}`),
-            fetch(`${baseUrl}/api/verse.php?date=${selectedDate}`),
+            fetch(`${baseUrl}/lectures.php?date=${selectedDate}`),
+            fetch(`${baseUrl}/verse.php?date=${selectedDate}`),
           ]);
 
         if (!readingsResponse.ok) {
