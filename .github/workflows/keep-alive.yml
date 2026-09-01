@@ -13,4 +13,4 @@ jobs:
     steps:
       - name: Ping Render Web Service
         run: |
-          curl -s -f -o /dev/null --max-time 10 https://votre-service.onrender.com/
+          curl -s -f -o /dev/null --max-time 10 https://lecturesdujour.onrender.com/
