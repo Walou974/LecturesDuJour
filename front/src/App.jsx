@@ -56,6 +56,9 @@ function App() {
     );
   }, [lightMode]);
 
+  /* API Base URL */
+  const API_BASE_URL = import.meta.env.VITE_API_PROXY || "https://lecturesdujour.onrender.com";
+
   /* Load data */
   useEffect(() => {
     async function loadData() {
@@ -63,10 +66,13 @@ function App() {
         setLoading(true);
         console.log(selectedDate);
 
+        // Nettoyage de l'URL pour éviter les doubles slashes (//)
+        const baseUrl = API_BASE_URL.replace(/\/$/, "");
+
         const [readingsResponse, verseResponse] =
           await Promise.all([
-            fetch(`/api/lectures.php?date=${selectedDate}`),
-            fetch(`/api/verse.php?date=${selectedDate}`),
+            fetch(`${baseUrl}/api/lectures.php?date=${selectedDate}`),
+            fetch(`${baseUrl}/api/verse.php?date=${selectedDate}`),
           ]);
 
         if (!readingsResponse.ok) {
@@ -229,7 +235,7 @@ function App() {
 
 
           <Card
-            Maintitle={readings[currentReading].title}
+            mainTitle={readings[currentReading].title}
             content={readings[currentReading]}
             selectedDate={selectedDate}
           />
