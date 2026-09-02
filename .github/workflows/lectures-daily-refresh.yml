@@ -1,0 +1,15 @@
+name: Import quotidien des lectures
+
+on:
+  schedule:
+    # S'exécute tous les jours à 8h00 UTC (ajuste selon le fuseau si besoin)
+    - cron: '0 5 * * *'
+  workflow_dispatch: # Permet de le lancer manuellement depuis GitHub
+
+jobs:
+  trigger-import:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Appeler l'API pour réveiller/mettre à jour Render
+        run: |
+          curl -X GET "https://lecturesdujour.onrender.com/refresh.php"
