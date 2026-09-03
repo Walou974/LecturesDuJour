@@ -4,6 +4,8 @@ Application web permettant de consulter les lectures liturgiques catholiques à 
 
 L'application récupère les textes liturgiques depuis une source externe, les stocke dans une base SQLite puis les expose via une API PHP pour être affichés dans une interface moderne développée avec React.
 
+![Main Page](/docs/LecturesDuJourMainPage.png)
+
 ---
 
 ## ✨ Fonctionnalités
@@ -91,42 +93,14 @@ git clone https://github.com/<votre-utilisateur>/EvangileDuJour.git
 cd EvangileDuJour
 ```
 
-### 2. Installer les dépendances du frontend
+### 2. Installer via Docker Compose
 
+Si ce n'est pas déjà fait, veuillez installer Docker Compose : [Docker Compose](https://docs.docker.com/compose/)
+
+Pour installer et lancer l'application :
 ```bash
-cd front
-
-npm install
+docker compose up
 ```
-
-### 3. Lancer le frontend
-
-```bash
-npm run dev
-```
-
-Application disponible sur :
-
-```text
-http://localhost:5173
-```
-
-### 4. Lancer le backend PHP
-
-Dans un second terminal :
-
-```bash
-cd back/api
-
-php -S localhost:8000
-```
-
-API disponible sur :
-
-```text
-http://localhost:8000
-```
-
 ---
 
 ## 🔌 API
@@ -235,22 +209,6 @@ Vue SQL simplifiant l'accès aux données depuis l'API PHP.
 - [ ] Historique des lectures
 - [ ] Recherche par référence biblique
 - [ ] PWA
-
----
-
-## 📸 Capture d'écran
-
-Ajouter une capture dans :
-
-```text
-docs/screenshot.png
-```
-
-Puis :
-
-```markdown
-docs/screenshot.png
-```
 
 ---
 
