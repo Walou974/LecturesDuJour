@@ -12,6 +12,7 @@ function ThemeToggle({ lightMode, setLightMode }) {
 
         checked={lightMode}
         onChange={() => setLightMode(!lightMode)}
+        alt="Moon Icon"
       />
 
       <input
@@ -19,6 +20,7 @@ function ThemeToggle({ lightMode, setLightMode }) {
         className="sr-only peer"
         checked={lightMode}
         onChange={() => setLightMode(!lightMode)}
+        aria-label="Toggle Theme"
       />
 
       <div
@@ -52,6 +54,7 @@ function ThemeToggle({ lightMode, setLightMode }) {
 
         checked={lightMode}
         onChange={() => setLightMode(!lightMode)}
+        alt="Sun Icon"
       />
     </label>
   );

@@ -16,7 +16,7 @@ function Card({ Maintitle, content, selectedDate }) {
         </div>
       )}
         {/* Main Title */}
-        <h3 className="gospel-title">{Maintitle}</h3>
+        <h2 className="gospel-title">{Maintitle}</h2>
         
         {/* Gospel Intro */}
         {content && content.intro && (

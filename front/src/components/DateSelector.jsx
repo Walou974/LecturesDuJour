@@ -34,10 +34,12 @@ function DateSelector({ selectedDate, setSelectedDate , lightMode}) {
             <button
                 className="date-nav-button"
                 onClick={goToPreviousDay}
+                aria-label="Previous Day"
             >
                 <img
                     src={leftArrow}
                     className={`w-5 h-5 ${lightMode ? " " : " invert "}`}
+                    alt="Previous Day"
                 />
             </button>
 
@@ -49,6 +51,7 @@ function DateSelector({ selectedDate, setSelectedDate , lightMode}) {
                 onChange={(e) =>
                     setSelectedDate(e.target.value)
                 }
+                aria-label="Select Date"
             />
 
 
@@ -56,10 +59,12 @@ function DateSelector({ selectedDate, setSelectedDate , lightMode}) {
             <button
                 className="date-nav-button"
                 onClick={goToNextDay}
+                aria-label="Next Day"
             >
                 <img
                     src={rightArrow}
                     className={`w-5 h-5 ${lightMode ? " " : " invert "}`}
+                    alt="Next Day"
                 />
             </button>
         </div>
