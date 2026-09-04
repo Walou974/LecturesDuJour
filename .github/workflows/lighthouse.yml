@@ -1,20 +1,20 @@
-name: Lighthouse Check
+name: Lighthouse CI
 on:
   push:
     branches: [ main ]
-  
+  pull_request:
   workflow_dispatch:
 
 jobs:
-  lighthouse:
+  lhci:
+    name: Lighthouse
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      # Audit Lighthouse + Génération de badge
       - name: Audit Lighthouse
         uses: treosh/lighthouse-ci-action@v11
         with:
           urls: |
-            https://lectures-du-jour.vercel.app/
-          uploadTargets: 'temporary-public-storage'
+            https://ton-site.com
+          temporaryPublicStorage: true
