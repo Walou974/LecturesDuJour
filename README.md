@@ -1,5 +1,7 @@
 # ✝️ Évangile du Jour
 
+![Lighthouse Dynamic](https://shields.io)
+
 Application web permettant de consulter les lectures liturgiques catholiques à une date donnée.
 
 L'application récupère les textes liturgiques depuis une source externe, les stocke dans une base SQLite puis les expose via une API PHP pour être affichés dans une interface moderne développée avec React.
