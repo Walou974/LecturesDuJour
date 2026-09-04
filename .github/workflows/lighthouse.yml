@@ -16,5 +16,5 @@ jobs:
         uses: treosh/lighthouse-ci-action@v11
         with:
           urls: |
-            https://ton-site.com
+            https://lectures-du-jour.vercel.app/
           temporaryPublicStorage: true
