@@ -16,5 +16,5 @@ jobs:
         uses: treosh/lighthouse-ci-action@v11
         with:
           urls: |
-            https://https://lectures-du-jour.vercel.app/
+            https://lectures-du-jour.vercel.app/
           uploadTargets: 'temporary-public-storage'
